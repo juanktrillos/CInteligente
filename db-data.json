@@ -1,0 +1,16 @@
+{
+    "dbs": 
+    [
+        {
+            "db-name" : "CInteligente",
+            "data" :
+            {
+                "userName" : "ciservice",
+                "passWord":"123456",
+                "server":"mlab.com",
+                "port": 63406,
+                "db":"ciservice"
+            }
+        }
+    ]
+}
