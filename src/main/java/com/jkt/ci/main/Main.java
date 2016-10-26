@@ -7,8 +7,9 @@ import java.net.UnknownHostException;
 /**
  *
  * @author olarguz
+ * @author juan.trillos
  */
-public class MongoTest 
+public class Main 
 {
 
     /**
