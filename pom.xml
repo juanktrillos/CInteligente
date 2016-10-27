@@ -5,13 +5,6 @@
     <artifactId>CInteligente</artifactId>
     <version>MongoLib-1.0</version>
     <packaging>jar</packaging>
-    <dependencies>
-        <dependency>
-            <groupId>com.oag.servicio</groupId>
-            <artifactId>MongoLib</artifactId>
-            <version>MongoLib-1.0</version>
-        </dependency>
-    </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -19,4 +12,12 @@
     </properties>
     <description>Proyecto para Ciudades Inteligentes 2016-03</description>
     <name>CInteligente</name>
+    <dependencies>
+        <dependency>
+            <groupId>com.jkt.lib</groupId>
+            <artifactId>MongoLib</artifactId>
+            <version>MongoLib-1.0</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
 </project>
