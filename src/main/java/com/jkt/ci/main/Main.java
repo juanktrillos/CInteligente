@@ -1,45 +1,87 @@
-
 package com.jkt.ci.main;
 
 //import com.oag.servicio.mongolib.driven.MongoHandler;
+import co.edu.uao.uaoiot.javauaoiotlib.UaoiotCallback;
+import co.edu.uao.uaoiot.javauaoiotlib.UaoiotClient;
 import com.jkt.lib.driven.MongoHandler;
 import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.eclipse.paho.client.mqttv3.MqttException;
 
 /**
  *
  * @author olarguz
  * @author juan.trillos
  */
-public class Main 
-{
+public class Main {
 
     /**
      * @param args the command line arguments
      * @throws java.net.UnknownHostException
      */
     public static void main(String[] args) throws UnknownHostException {
-        MongoHandler mongoHandler = new MongoHandler("CInteligente");
-        
+
+        try {
+            MongoHandler mongoHandler = new MongoHandler("CInteligente");
+
+            UaoiotClient uaoiot = new UaoiotClient();
+            uaoiot.connect("181.118.150.147", "nombre", "grupo", "password"); //IP EXTERNA UAOIOT
+            //uaoiot.connect("172.16.3.27", "nombre", "grupo", "password"); //IP INTERNA UAOIOT
+            //uaoiot.addDevice("remoteDeviceName");
+
+            uaoiot.setUaoiotCallback(new UaoiotCallback() {
+
+                /**
+                 * METODO que recibe un valor de otro dispositivo UNO A UNO
+                 *
+                 * @param register
+                 * @param value
+                 */
+                @Override
+                public void onModifyDataArrive(int register, int value) {
+                    System.out.println("IdRegistro: " + register);
+                    System.out.println("Value     : " + value);
+                }
+
+                /**
+                 * METODO que recibe un valor de otro dispositivo UNO A MUCHOS
+                 *
+                 * @param deviceName
+                 * @param register
+                 * @param value
+                 */
+                @Override
+                public void onPublishDataArrive(String deviceName, int register, int value) {
+                    System.out.println("DeviceName: " + deviceName);
+                    System.out.println("Registor  : " + register);
+                    System.out.println("Value     : " + value);
+                }
+            });
+
+        } catch (MqttException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //<editor-fold defaultstate="collapsed" desc="EJEMPLOS DE MANEJO DE MONGODB">
 //        mongoHandler.insert( new Articulo("Bus", "MC-R45GF-AS45HN", 2001));
 //        mongoHandler.insert( new Persona("Jessica Robayo", 19, "Ing. Mecatronica", "2130520"));
 //        mongoHandler.insert( new Persona("Daniel Zamora", 19, "Ing. Multimedia", "2130400"));
 //        mongoHandler.insert( new Personaje("A4","Avatar2","Stand",new Vector(-1.5,10,0), new Vector(1, 0, 0)));
 //        mongoHandler.insert( new Pregunta("Facil","Cuantos  ......."));
-
 //        CriterioActualizacion criterioActualizacion = new CriterioActualizacion();
 //        criterioActualizacion.setCriterio(Persona.IDENTIFICACION, "888181818");
 //        criterioActualizacion.setNuevoValor(Persona.EDAD, 44);
 //        mongoHandler.update( Persona.class, criterioActualizacion);
-
 //        BufferedImage img = new BufferedImage(300, 50, BufferedImage.TYPE_INT_ARGB);
 //        Imagen imagenA = new Imagen("cuadro.png", "PNG", img);
 //        mongoHandler.insert( imagenA);
-
 //        LinkedList<Persona> personas = (LinkedList<Persona>) mongoHandler.findAll(Persona.class);
 //        LinkedList<Articulo> articulos = (LinkedList<Articulo>) mongoHandler.findAll(Articulo.class);
 //        LinkedList<Personaje> personajes =(LinkedList<Personaje>) mongoHandler.findAll(Personaje.class);
 //        LinkedList<Imagen> imagenes = (LinkedList<Imagen>) mongoHandler.findAll(Imagen.class);
-//        
+//
 //        personas.stream().forEach((persona) ->
 //        {
 //            System.out.println(persona.toString());
@@ -75,5 +117,5 @@ public class Main
 //        {
 //            System.out.println(persona.toString());
 //        });
-    }
+//</editor-fold>
 }

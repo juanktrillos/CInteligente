@@ -5,28 +5,27 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- *
+ * CLASE Device - hace referencia a los sensores que capturan un dato del entorno
+ * 
  * @author olarguz
+ * @author juan.trillos
  */
-public class Articulo extends BasicDBObject
+public class Device extends BasicDBObject
 {
-    public static final String NOMBRE = "nombre";
-    public static final String REFERENCIA = "referencia";
-    public static final String MODELO = "modelo";
+    public static final String DATO = "dato";
 
     private boolean partial;
     
-    public Articulo ()
+    public Device ()
     {
         partial = false;
     }
     
+    
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Articulo (String nombre, String referencia, int Modelo)
+    public Device (int dato)
     {
-        this.put(Articulo.NOMBRE, nombre);
-        this.put(Articulo.REFERENCIA, referencia);
-        this.put(Articulo.MODELO, Modelo);
+        this.put(Device.DATO, dato);
         
         this.markAsPartialObject();
     }
@@ -37,28 +36,16 @@ public class Articulo extends BasicDBObject
         set.remove("_id");
         
         Set<String> setThis = new HashSet<>();
-        setThis.add(NOMBRE);
-        setThis.add(REFERENCIA);
-        setThis.add(MODELO);
+        setThis.add(DATO);
         
         partial =  !set.equals(setThis);
     }
     
     public String getNombre ()
     {
-        return this.getString(Articulo.NOMBRE);
+        return this.getString(Device.DATO);
     }
-
-    public String getReferencia ()
-    {
-        return this.getString(Articulo.REFERENCIA);
-    }
-
-    public String getModelo ()
-    {
-        return this.getString(Articulo.MODELO);
-    }
-
+    
     @Override
     public boolean isPartialObject() {
         return partial;
@@ -83,11 +70,9 @@ public class Articulo extends BasicDBObject
         {
             return false;
         }
-        final Articulo other = (Articulo) obj;
+        final Device other = (Device) obj;
         boolean cn = getNombre().equals(other.getNombre());
-        boolean cr = getReferencia().equals(other.getReferencia());
-        boolean cm = getModelo().equals(other.getModelo());
-        return cn && cr && cm;
+        return cn;
     }
     
 }
