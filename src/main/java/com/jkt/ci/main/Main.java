@@ -1,8 +1,11 @@
 package com.jkt.ci.main;
 
 //import com.oag.servicio.mongolib.driven.MongoHandler;
+import com.jkt.ci.main.data.Device;
 import com.jkt.lib.driven.MongoHandler;
 import java.net.UnknownHostException;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,7 +21,7 @@ public class Main {
      */
     public static void main(String[] args) {
 
-//        dataBase();
+        dataBase();
     }
 
     //<editor-fold defaultstate="collapsed" desc="EJEMPLOS DE MANEJO DE MONGODB">
@@ -78,8 +81,18 @@ public class Main {
     private static void dataBase() {
         try {
             MongoHandler mongoHandler = new MongoHandler("CInteligente");
+            Date date = new Date();
+            System.out.println(date);
+//            mongoHandler.insert(new Device(25, "perro", "temperatura", date));
+            LinkedList<Device> device = (LinkedList<Device>) mongoHandler.findAll(Device.class);
+
+            for (Device device1 : device) {
+                System.out.print("Temperatura: ");
+                System.out.println(device1.get("dato"));
+            }
+
         } catch (UnknownHostException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("no se conecto a DB");
         }
     }
 }
