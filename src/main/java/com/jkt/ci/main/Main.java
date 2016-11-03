@@ -1,13 +1,14 @@
 package com.jkt.ci.main;
 
 //import com.oag.servicio.mongolib.driven.MongoHandler;
-import com.jkt.ci.main.data.Device;
+//import com.jkt.ci.main.data.Device;
+import com.jkt.ci.main.data.Basura;
+import com.jkt.ci.main.data.Presion;
+import com.jkt.ci.main.data.Radiacion;
+import com.jkt.ci.main.data.Temperatura;
 import com.jkt.lib.driven.MongoHandler;
 import java.net.UnknownHostException;
-import java.util.Date;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -21,7 +22,11 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        dataBase();
+//        UAOIoT device = new UAOIoT();
+
+//        device.setActive(true);
+        
+//        dataBase();
     }
 
     //<editor-fold defaultstate="collapsed" desc="EJEMPLOS DE MANEJO DE MONGODB">
@@ -81,14 +86,29 @@ public class Main {
     private static void dataBase() {
         try {
             MongoHandler mongoHandler = new MongoHandler("CInteligente");
-            Date date = new Date();
-            System.out.println(date);
-//            mongoHandler.insert(new Device(25, "perro", "temperatura", date));
-            LinkedList<Device> device = (LinkedList<Device>) mongoHandler.findAll(Device.class);
+            LinkedList<Temperatura> temperatura = (LinkedList<Temperatura>) mongoHandler.findAll(Temperatura.class);
+            LinkedList<Presion> presion = (LinkedList<Presion>) mongoHandler.findAll(Presion.class);
+            LinkedList<Basura> basura = (LinkedList<Basura>) mongoHandler.findAll(Basura.class);
+            LinkedList<Radiacion> radiacion = (LinkedList<Radiacion>) mongoHandler.findAll(Radiacion.class);
 
-            for (Device device1 : device) {
-                System.out.print("Temperatura: ");
-                System.out.println(device1.get("dato"));
+            for (Temperatura temp : temperatura) {
+                System.out.print("Temperatura:       ");
+                System.out.println(temp.get("dato"));
+            }
+
+            for (Radiacion rad : radiacion) {
+                System.out.print("Radiacion:       ");
+                System.out.println(rad.get("dato"));
+            }
+
+            for (Presion pres : presion) {
+                System.out.print("Presion:       ");
+                System.out.println(pres.get("dato"));
+            }
+
+            for (Basura basu : basura) {
+                System.out.print("Basura:       ");
+                System.out.println(basu.get("dato"));
             }
 
         } catch (UnknownHostException ex) {

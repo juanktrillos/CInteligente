@@ -14,6 +14,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   int data = analogRead(A0);
   checkConn();
+  // publishData (El Registro, el dato) 
   publishData(1, data);
   Serial.print("Enviando datos ....... "); Serial.println(datos);
   delay(1000);
