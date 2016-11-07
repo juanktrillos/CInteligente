@@ -48,9 +48,9 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="bStatus" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="bActive" min="-2" pref="136" max="-2" attributes="0"/>
+                          <Component id="bStart" min="-2" pref="136" max="-2" attributes="0"/>
                           <EmptySpace pref="43" max="32767" attributes="0"/>
-                          <Component id="bDeactive" min="-2" pref="136" max="-2" attributes="0"/>
+                          <Component id="bStop" min="-2" pref="136" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
@@ -64,8 +64,8 @@
                   <Component id="bStatus" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="bActive" alignment="3" min="-2" pref="92" max="-2" attributes="0"/>
-                      <Component id="bDeactive" alignment="3" min="-2" pref="92" max="-2" attributes="0"/>
+                      <Component id="bStart" alignment="3" min="-2" pref="92" max="-2" attributes="0"/>
+                      <Component id="bStop" alignment="3" min="-2" pref="92" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
@@ -73,27 +73,27 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="bActive">
+        <Component class="javax.swing.JButton" name="bStart">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Active Updating"/>
+            <Property name="text" type="java.lang.String" value="Start Updating"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bActiveActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bStartActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="bDeactive">
+        <Component class="javax.swing.JButton" name="bStop">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Deactive Updating"/>
+            <Property name="text" type="java.lang.String" value="Stop Updating"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bDeactiveActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bStopActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bStatus">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Start Updating"/>
+            <Property name="text" type="java.lang.String" value="Start Connection"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bStatusActionPerformed"/>

@@ -12,14 +12,13 @@ package com.jkt.ci.main;
 public class JMain extends javax.swing.JFrame {
 
     private UAOIoT device;
-    private boolean status = false;
 
     /**
      * Creates new form JMain
      */
     public JMain() {
         initComponents();
-        this.setTitle("Update Data in DataBase");
+        this.setTitle("Update Data in Database");
     }
 
     /**
@@ -32,31 +31,31 @@ public class JMain extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        bActive = new javax.swing.JButton();
-        bDeactive = new javax.swing.JButton();
+        bStart = new javax.swing.JButton();
+        bStop = new javax.swing.JButton();
         bStatus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(380, 270));
 
-        bActive.setText("Active Updating");
-        bActive.setEnabled(false);
-        bActive.addActionListener(new java.awt.event.ActionListener() {
+        bStart.setText("Start Updating");
+        bStart.setEnabled(false);
+        bStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bActiveActionPerformed(evt);
+                bStartActionPerformed(evt);
             }
         });
 
-        bDeactive.setText("Deactive Updating");
-        bDeactive.setEnabled(false);
-        bDeactive.addActionListener(new java.awt.event.ActionListener() {
+        bStop.setText("Stop Updating");
+        bStop.setEnabled(false);
+        bStop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bDeactiveActionPerformed(evt);
+                bStopActionPerformed(evt);
             }
         });
 
-        bStatus.setText("Start Updating");
+        bStatus.setText("Start Connection");
         bStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bStatusActionPerformed(evt);
@@ -72,9 +71,9 @@ public class JMain extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(bStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(bActive, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bStart, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addComponent(bDeactive, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bStop, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
@@ -84,8 +83,8 @@ public class JMain extends javax.swing.JFrame {
                 .addComponent(bStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bActive, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bDeactive, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bStart, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bStop, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
         );
 
@@ -103,31 +102,28 @@ public class JMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bActiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActiveActionPerformed
+    private void bStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStartActionPerformed
         // TODO add your handling code here:
         device.setActive(true);
-        bActive.setEnabled(false);
-        System.out.println("UAOIoT ACTIVE");
-        bDeactive.setEnabled(true);
-    }//GEN-LAST:event_bActiveActionPerformed
+        bStart.setEnabled(false);
+        bStop.setEnabled(true);
+    }//GEN-LAST:event_bStartActionPerformed
 
-    private void bDeactiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDeactiveActionPerformed
+    private void bStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStopActionPerformed
         // TODO add your handling code here:
         device.setActive(false);
-        bActive.setEnabled(true);
-        System.out.println("UAOIoT DEACTIVE");
-        bDeactive.setEnabled(false);
-    }//GEN-LAST:event_bDeactiveActionPerformed
+        bStart.setEnabled(true);
+        bStop.setEnabled(false);
+    }//GEN-LAST:event_bStopActionPerformed
 
     private void bStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStatusActionPerformed
         // TODO add your handling code here:
 
-        if (!status) {
+        if (bStatus.getText().equals("Start Connection")) {
             device = new UAOIoT();
             System.out.println("UAOIoT STAND BY");
-            bActive.setEnabled(true);
-            bStatus.setText("Stop/Close Updating");
-            status = true;
+            bStart.setEnabled(true);
+            bStatus.setText("Stop/Close");
         }else{
             this.dispose();
         }
@@ -169,9 +165,9 @@ public class JMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bActive;
-    private javax.swing.JButton bDeactive;
+    private javax.swing.JButton bStart;
     private javax.swing.JButton bStatus;
+    private javax.swing.JButton bStop;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

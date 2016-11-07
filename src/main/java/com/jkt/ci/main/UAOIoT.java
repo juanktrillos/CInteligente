@@ -8,7 +8,6 @@ package com.jkt.ci.main;
 import co.edu.uao.uaoiot.javauaoiotlib.UaoiotCallback;
 import co.edu.uao.uaoiot.javauaoiotlib.UaoiotClient;
 import com.jkt.ci.main.data.Basura;
-//import com.jkt.ci.main.data.Device;
 import com.jkt.ci.main.data.Presion;
 import com.jkt.ci.main.data.Radiacion;
 import com.jkt.ci.main.data.Temperatura;
@@ -22,7 +21,7 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 
 /**
  *
- * @author JuanCamilo
+ * @author juan.trillos
  */
 public class UAOIoT {
 
@@ -73,6 +72,7 @@ public class UAOIoT {
                 System.out.println("DeviceName: " + deviceName);
                 System.out.println("Registor  : " + register);
                 System.out.println("Value     : " + value);
+                
                 if (active) {
                     Calendar date = new GregorianCalendar();
                     try {
