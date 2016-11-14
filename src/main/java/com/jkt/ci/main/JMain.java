@@ -121,8 +121,7 @@ public class JMain extends javax.swing.JFrame {
 
         if (bStatus.getText().equals("Start Connection")) {
             device = new UAOIoT();
-            System.out.println("UAOIoT STAND BY");
-            bStart.setEnabled(true);
+            bStop.setEnabled(true);
             bStatus.setText("Stop/Close");
         }else{
             this.dispose();

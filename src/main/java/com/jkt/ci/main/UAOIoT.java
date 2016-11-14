@@ -31,7 +31,7 @@ public class UAOIoT {
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public UAOIoT() {
         uaoiot = new UaoiotClient();
-        this.active = false;
+        this.active = true;
         try {
 //            uaoiot.connect("181.118.150.147", "nombre", "grupo", "password"); //IP EXTERNA UAOIOT
             uaoiot.connect("172.16.3.27", "prueba", "grupo1", "123456"); //IP INTERNA UAOIOT
