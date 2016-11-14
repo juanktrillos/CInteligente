@@ -74,20 +74,21 @@ public class UAOIoT {
                 System.out.println("Value     : " + value);
                 
                 if (active) {
+                    String park = "Parque Famoso";
                     Calendar date = new GregorianCalendar();
                     try {
                         MongoHandler mongoHandler = new MongoHandler("CInteligente");
                         if (register == 1) {
-                            mongoHandler.insert(new Temperatura(value, "Parque del Perro", date));
+                            mongoHandler.insert(new Temperatura(value, park, date));
                         }
                         if (register == 2) {
-                            mongoHandler.insert(new Presion(value, "Parque del Perro", date));
+                            mongoHandler.insert(new Presion(value, park, date));
                         }
                         if (register == 3) {
-                            mongoHandler.insert(new Basura(value, "Parque del Perro", date));
+                            mongoHandler.insert(new Basura(value, park, date));
                         }
                         if (register == 4) {
-                            mongoHandler.insert(new Radiacion(value, "Parque del Perro", date));
+                            mongoHandler.insert(new Radiacion(value, park, date));
                         }
                     } catch (UnknownHostException ex) {
                         Logger.getLogger(UAOIoT.class.getName()).log(Level.SEVERE, null, ex);
