@@ -17,7 +17,7 @@ import java.util.Set;
  * @author Adrian del Pozo
  * @author David Rojas
  */
-public class Presion extends BasicDBObject {
+public class Basura_Organica extends BasicDBObject {
 
     public static final String PARQUE = "parque";
     public static final String DATO = "dato";
@@ -25,16 +25,16 @@ public class Presion extends BasicDBObject {
 
     private boolean partial;
 
-    public Presion() {
+    public Basura_Organica() {
         partial = false;
     }
 
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Presion(int dato, String parque, Calendar date) {
+    public Basura_Organica(int dato, String parque, Calendar date) {
         String dateFormate = date.get(Calendar.DAY_OF_MONTH) + "/" + (1 + date.get(Calendar.MONTH)) + "/" + date.get(Calendar.YEAR);
-        this.put(Presion.DATO, dato);
-        this.put(Presion.PARQUE, parque);
-        this.put(Presion.FECHA, dateFormate);
+        this.put(Basura_Organica.DATO, dato);
+        this.put(Basura_Organica.PARQUE, parque);
+        this.put(Basura_Organica.FECHA, dateFormate);
 
         this.markAsPartialObject();
     }

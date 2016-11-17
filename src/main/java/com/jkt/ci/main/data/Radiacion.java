@@ -12,7 +12,10 @@ import java.util.Set;
 
 /**
  *
- * @author juan.trillos
+ * @author Juan Camilo Trillos
+ * @author David Perez
+ * @author Adrian del Pozo
+ * @author David Rojas
  */
 public class Radiacion extends BasicDBObject {
 

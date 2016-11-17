@@ -12,9 +12,12 @@ import java.util.Set;
 
 /**
  *
- * @author juan.trillos
+ * @author Juan Camilo Trillos
+ * @author David Perez
+ * @author Adrian del Pozo
+ * @author David Rojas
  */
-public class Basura extends BasicDBObject {
+public class Basura_Inorganica extends BasicDBObject {
 
     public static final String PARQUE = "parque";
     public static final String DATO = "dato";
@@ -22,16 +25,16 @@ public class Basura extends BasicDBObject {
 
     private boolean partial;
 
-    public Basura() {
+    public Basura_Inorganica() {
         partial = false;
     }
 
     @SuppressWarnings("OverridableMethodCallInConstructor")
-    public Basura(int dato, String parque, Calendar date) {
+    public Basura_Inorganica(int dato, String parque, Calendar date) {
         String dateFormate = date.get(Calendar.DAY_OF_MONTH) + "/" + (1 + date.get(Calendar.MONTH)) + "/" + date.get(Calendar.YEAR);
-        this.put(Basura.DATO, dato);
-        this.put(Basura.PARQUE, parque);
-        this.put(Basura.FECHA, dateFormate);
+        this.put(Basura_Inorganica.DATO, dato);
+        this.put(Basura_Inorganica.PARQUE, parque);
+        this.put(Basura_Inorganica.FECHA, dateFormate);
 
         this.markAsPartialObject();
     }
